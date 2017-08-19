@@ -24,11 +24,14 @@ public class Solution {
 		for(int p = min; p <= max; p++){ // minimum price 
 			
 			long nr = coll[p]; // day of the minimum price 
-			
-			while(k - nr * p < 0 && nr > 0)
-				nr --;
+
+			if(k - nr < 0)
+				break;
 
 			if(nr != 0){
+			
+				while(k - nr * p < 0 && nr > 0)
+					nr --;
 				count += nr;
 				k -= nr * p;
 			}
