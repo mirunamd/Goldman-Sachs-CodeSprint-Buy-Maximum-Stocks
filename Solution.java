@@ -3,10 +3,9 @@ import java.util.*;
 import java.text.*;
 import java.math.*;
 import java.util.regex.*;
-import java.util.stream.Stream;
 
 public class Solution {
-	private static int[] coll = new int[101]; // coll[i] holds the price for day i
+	private static long[] coll = new long[101]; // coll[i] holds the price for day i
 
     static long buyMaximumProducts(int n, long k, int[] a) {
        	long count = 0;
@@ -15,6 +14,7 @@ public class Solution {
 
 		for(int i = 0; i < n; i++){
 			coll[a[i]] += (i + 1);
+
 			if(a[i] > max)
 				max = a[i];
 			if(a[i] < min)
@@ -23,7 +23,7 @@ public class Solution {
 
 		for(int p = min; p <= max; p++){ // minimum price 
 			
-			int nr = coll[p]; // day of the minimum price 
+			long nr = coll[p]; // day of the minimum price 
 			
 			while(k - nr * p < 0 && nr > 0)
 				nr --;
